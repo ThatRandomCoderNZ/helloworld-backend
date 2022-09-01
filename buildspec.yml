@@ -10,13 +10,11 @@ phases:
     commands:
       - echo "Entered build phase"
       - echo | mvn --version
-      - mvn clean install prepare-package war:exploded
+      - mvn clean install prepare-package war
   post_build:
     commands:
       - echo "Entered the post-build phase"
-      - mv target/deploy/WEB-INF/lib ./
-      - mv ./lib/app-0.0.1-SNAPSHOT.jar ./
+      - mv target/deploy/ ./
 artifacts:
   files:
-    - app-0.0.1-SNAPSHOT.jar
-    - lib/*
+    - deploy/**/*
