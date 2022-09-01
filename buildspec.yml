@@ -14,7 +14,7 @@ phases:
   post_build:
     commands:
       - echo "Entered the post-build phase"
-      - mv target/deploy/*.jar app.jar
+      - mv target/deploy/*.jar ./
 artifacts:
   files:
-    - app.jar
+    - ./
