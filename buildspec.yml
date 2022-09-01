@@ -16,4 +16,4 @@ phases:
       - echo "Entered the post-build phase"
 artifacts:
   files:
-    - app-0.0.1.SNAPSHOT.jar
+    - target/*
