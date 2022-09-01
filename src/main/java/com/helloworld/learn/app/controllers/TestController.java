@@ -1,6 +1,7 @@
 package com.helloworld.learn.app.controllers;
 
 import com.helloworld.learn.app.models.Test;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class TestController {
 
     private final TestRepository testRepository;
