@@ -10,7 +10,7 @@ phases:
     commands:
       - echo "Entered build phase"
       - echo | mvn --version
-      - mvn clean install prepare-package war
+      - mvn clean install package
   post_build:
     commands:
       - echo "Entered the post-build phase"
