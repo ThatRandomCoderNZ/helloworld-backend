@@ -1,4 +1,4 @@
-package com.helloworld.learn.app.models;
+package com.helloworld.learn.app.models.user;
 
 public class UserDTO {
     private String username;
