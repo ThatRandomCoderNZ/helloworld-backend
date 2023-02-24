@@ -1,4 +1,4 @@
-package com.helloworld.learn.app.models;
+package com.helloworld.learn.app.models.auth;
 
 import java.io.Serializable;
 

@@ -3,10 +3,9 @@ package com.helloworld.learn.app.services;
 import java.util.ArrayList;
 
 import com.helloworld.learn.app.dao.UserDao;
-import com.helloworld.learn.app.models.DAOUser;
-import com.helloworld.learn.app.models.UserDTO;
+import com.helloworld.learn.app.models.user.DAOUser;
+import com.helloworld.learn.app.models.user.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

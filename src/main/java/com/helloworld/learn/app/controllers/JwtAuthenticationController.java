@@ -1,6 +1,8 @@
 package com.helloworld.learn.app.controllers;
 
-import com.helloworld.learn.app.models.UserDTO;
+import com.helloworld.learn.app.models.user.UserDTO;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,11 +15,13 @@ import com.helloworld.learn.app.services.JwtUserDetailsService;
 
 
 import com.helloworld.learn.app.config.JwtTokenUtil;
-import com.helloworld.learn.app.models.JwtRequest;
-import com.helloworld.learn.app.models.JwtResponse;
+import com.helloworld.learn.app.models.auth.JwtRequest;
+import com.helloworld.learn.app.models.auth.JwtResponse;
+
+import java.util.logging.Logger;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:5173/")
 public class JwtAuthenticationController {
 
     @Autowired
@@ -32,7 +36,7 @@ public class JwtAuthenticationController {
     @CrossOrigin
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
-        System.out.println("Reached end point");
+
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
         final UserDetails userDetails = userDetailsService
@@ -43,7 +47,6 @@ public class JwtAuthenticationController {
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    @CrossOrigin
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
         return ResponseEntity.ok(userDetailsService.save(user));
