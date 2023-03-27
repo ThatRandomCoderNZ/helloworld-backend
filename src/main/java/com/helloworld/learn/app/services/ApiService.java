@@ -16,7 +16,6 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class ApiService {
 
-    //"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"
     @Value("${openai.key}")
     private String apiKey;
 
