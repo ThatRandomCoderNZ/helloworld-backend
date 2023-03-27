@@ -1,6 +1,6 @@
 package com.helloworld.learn.app.models.features;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
@@ -26,6 +26,9 @@ public class Language {
 
     @OneToMany(mappedBy = "language", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Section> sections;
+
+    @OneToMany(mappedBy = "language", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<GrammarLesson> grammarLessons;
 
     public Language(){}
 
@@ -63,5 +66,13 @@ public class Language {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<GrammarLesson> getGrammarLessons() {
+        return grammarLessons;
+    }
+
+    public void setGrammarLessons(List<GrammarLesson> grammarLessons) {
+        this.grammarLessons = grammarLessons;
     }
 }

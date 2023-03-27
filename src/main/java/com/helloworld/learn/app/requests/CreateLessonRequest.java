@@ -3,8 +3,8 @@ package com.helloworld.learn.app.requests;
 import com.helloworld.learn.app.models.features.Section;
 import com.helloworld.learn.app.models.features.Vocabulary;
 
-import javax.persistence.Column;
-import javax.persistence.OneToMany;
+import jakarta.persistence.Column;
+import jakarta.persistence.OneToMany;
 import java.util.List;
 
 public class CreateLessonRequest {

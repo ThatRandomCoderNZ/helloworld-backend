@@ -1,14 +1,7 @@
 package com.helloworld.learn.app.services;
 
 import com.helloworld.learn.app.models.features.*;
-import com.helloworld.learn.app.repositories.LanguageRepository;
-import com.helloworld.learn.app.repositories.LessonRepository;
-import com.helloworld.learn.app.repositories.SectionRepository;
-import com.helloworld.learn.app.repositories.VocabularyRepository;
-import com.helloworld.learn.app.requests.CreateLanguageRequest;
-import com.helloworld.learn.app.requests.CreateLessonRequest;
-import com.helloworld.learn.app.requests.CreateSectionRequest;
-import org.springframework.data.crossstore.ChangeSetPersister;
+import com.helloworld.learn.app.repositories.*;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -25,16 +18,19 @@ public class ContentService {
 
     private final LessonRepository lessonRepository;
 
+    private final GrammarLessonRepository grammarLessonRepository;
+
     public ContentService(
             VocabularyRepository vocabularyRepository,
             LanguageRepository languageRepository,
             SectionRepository sectionRepository,
-            LessonRepository lessonRepository
-    ) {
+            LessonRepository lessonRepository,
+            GrammarLessonRepository grammarLessonRepository) {
         this.vocabularyRepository = vocabularyRepository;
         this.languageRepository = languageRepository;
         this.sectionRepository = sectionRepository;
         this.lessonRepository = lessonRepository;
+        this.grammarLessonRepository = grammarLessonRepository;
     }
 
 
@@ -153,6 +149,36 @@ public class ContentService {
         List<Lesson> lessons = new ArrayList<>();
         Section section = this.sectionRepository.findById(sectionId).orElseThrow();
         this.lessonRepository.findAllBySection(section).forEach(lessons::add);
+        return lessons;
+    }
+
+
+
+
+    public void upsertGrammarLesson(GrammarLesson lessonRequest) {
+        if(lessonRequest.getId() != null){
+            GrammarLesson oldLesson = grammarLessonRepository.findById(lessonRequest.getId()).orElseThrow();
+            lessonRequest.setLanguage(oldLesson.getLanguage());
+        }
+        this.grammarLessonRepository.save(lessonRequest);
+    }
+
+    public void deleteGrammarLesson(Long lessonId)
+    {
+        this.grammarLessonRepository.deleteById(lessonId);
+    }
+
+
+    public GrammarLesson getGrammarLesson(Long lessonId)
+    {
+        return this.grammarLessonRepository.findById(lessonId).orElseThrow();
+    }
+
+    public List<GrammarLesson> getAllGrammarLessonsByLanguage(Long languageId)
+    {
+        List<GrammarLesson> lessons = new ArrayList<>();
+        Language language = this.languageRepository.findById(languageId).orElseThrow();
+        this.grammarLessonRepository.findAllByLanguage(language).forEach(lessons::add);
         return lessons;
     }
 

@@ -11,9 +11,10 @@ public class CompletionRequest {
     private String object;
 
     @JsonProperty
-    private Long created;
-    @JsonProperty
     private String model;
+
+    @JsonProperty
+    private Long created;
 
     @JsonProperty
     private List<ChoiceResponse> choices;
@@ -42,14 +43,6 @@ public class CompletionRequest {
         this.created = created;
     }
 
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
     public List<ChoiceResponse> getChoices() {
         return choices;
     }
@@ -74,17 +67,24 @@ public class CompletionRequest {
     public CompletionRequest(
             String id,
             String object,
-            Long created,
             String model,
+            Long created,
             List<ChoiceResponse> choices,
             UsageResponse usage
     ){
         this.id = id;
         this.object = object;
-        this.created = created;
         this.model = model;
+        this.created = created;
         this.choices = choices;
         this.usage = usage;
     }
 
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
 }

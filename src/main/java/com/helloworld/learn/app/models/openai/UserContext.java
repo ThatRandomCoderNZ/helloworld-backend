@@ -3,7 +3,7 @@ package com.helloworld.learn.app.models.openai;
 import com.helloworld.learn.app.models.user.DAOUser;
 import org.springframework.security.core.userdetails.User;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class UserContext {

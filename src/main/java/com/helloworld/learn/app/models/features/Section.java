@@ -2,7 +2,7 @@ package com.helloworld.learn.app.models.features;
 
 import org.springframework.web.bind.annotation.Mapping;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.List;
 
 @Entity

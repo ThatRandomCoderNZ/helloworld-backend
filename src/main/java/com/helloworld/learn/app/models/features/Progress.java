@@ -2,7 +2,7 @@ package com.helloworld.learn.app.models.features;
 
 import com.helloworld.learn.app.models.user.DAOUser;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class Progress

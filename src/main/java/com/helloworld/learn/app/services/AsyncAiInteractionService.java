@@ -33,7 +33,7 @@ public class AsyncAiInteractionService {
                 requestPrompt + "' , Diego: '" + promptResponse + "'";
         this.logger.warn("SUMMARY PROMPT: " + summaryPrompt);
         CompletionRequest summaryCompletion = this.apiService.makeRequest(summaryPrompt);
-        String newContext = summaryCompletion.getChoices().get(0).getText().strip().replaceAll("\"", "'");
+        String newContext = summaryCompletion.getChoices().get(0).getMessage().getContent().strip().replaceAll("\"", "'");
         this.logger.warn("SUMMARY RESPONSE: " + newContext);
         userContext.setContext(newContext);
         this.userContextRepository.save(userContext);

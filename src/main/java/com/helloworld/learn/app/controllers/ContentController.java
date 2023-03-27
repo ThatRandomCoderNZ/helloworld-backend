@@ -171,4 +171,44 @@ public class ContentController {
     }
 
 
+
+
+    @PostMapping ("{languageId}/grammar")
+    public void createGrammarLesson(
+            @PathVariable("languageId") Long languageId,
+            @RequestBody GrammarLesson lessonRequest
+    ) {
+        lessonRequest.setLanguage(new Language(languageId, "", ""));
+        this.contentService.upsertGrammarLesson(lessonRequest);
+    }
+
+    @PutMapping ("grammar")
+    public void updateGrammarLesson(
+            @RequestBody GrammarLesson lessonRequest
+    ) {
+        this.contentService.upsertGrammarLesson(lessonRequest);
+    }
+
+    @DeleteMapping("/grammar/{lessonId}")
+    public void deleteGrammarLesson(@PathVariable("lessonId") Long lessonId)
+    {
+        this.contentService.deleteGrammarLesson(lessonId);
+    }
+
+    @GetMapping("/grammar/{lessonId}")
+    public GrammarLessonResponse getGrammarLesson(@PathVariable("lessonId") Long lessonId)
+    {
+        GrammarLesson lesson = this.contentService.getGrammarLesson(lessonId);
+        return new GrammarLessonResponse(lesson);
+    }
+
+    @GetMapping("{languageId}/grammar")
+    public List<GrammarLessonResponse> getAllGrammarLessons(
+            @PathVariable("languageId") Long languageId
+    ) {
+        List<GrammarLesson> lessons = this.contentService.getAllGrammarLessonsByLanguage(languageId);
+        return lessons.stream().map(GrammarLessonResponse::new).toList();
+    }
+
+
 }

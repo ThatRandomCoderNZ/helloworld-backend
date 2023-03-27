@@ -49,10 +49,10 @@ public class AiInteractionService {
 
         Language language = languageRepository.findById(languageId).orElseThrow();
 
-        String prompt = "From the perspective of Diego an Engineering student who enjoys reading and playing piano, " +
-                "speaking with User, with current conversational context of '" + currentContext + "'. ";
+//        String prompt = "From the perspective of Diego an Engineering student who enjoys reading and playing piano, " +
+//                "speaking with User, with current conversational context of '" + currentContext + "'. ";
 
-        prompt += "Give a natural response in "  + language.getName() + " to '" + requestPrompt + "' that continues the conversation.";
+        String prompt = requestPrompt;
 
         LoggerFactory.getLogger(this.getClass()).warn("Original prompt: " + prompt);
 
@@ -60,7 +60,7 @@ public class AiInteractionService {
 
         LoggerFactory.getLogger(this.getClass()).warn("Tokens: " + completion.getUsage().getTotalTokens());
 
-        String promptResponse = completion.getChoices().get(0).getText().strip();
+        String promptResponse = completion.getChoices().get(0).getMessage().getContent().strip();
 
         this.asyncAiInteractionService.generateSummary(userContext, requestPrompt, promptResponse);
 

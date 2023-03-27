@@ -4,18 +4,24 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ChoiceResponse {
     @JsonProperty
-    private String text;
-    @JsonProperty
     private int index;
+
     @JsonProperty
-    private boolean logprobs;
+    private MessageResponse message;
 
-    public String getText() {
-        return text;
-    }
+    @JsonProperty("finish_reason")
+    private String finishReason;
 
-    public void setText(String text) {
-        this.text = text;
+    public ChoiceResponse(){}
+
+    public ChoiceResponse(
+            int index,
+            MessageResponse message,
+            String finishReason
+    ){
+        this.index = index;
+        this.message = message;
+        this.finishReason = finishReason;
     }
 
     public int getIndex() {
@@ -26,14 +32,6 @@ public class ChoiceResponse {
         this.index = index;
     }
 
-    public boolean isLogprobs() {
-        return logprobs;
-    }
-
-    public void setLogprobs(boolean logprobs) {
-        this.logprobs = logprobs;
-    }
-
     public String getFinishReason() {
         return finishReason;
     }
@@ -42,20 +40,11 @@ public class ChoiceResponse {
         this.finishReason = finishReason;
     }
 
-    @JsonProperty("finish_reason")
-    private String finishReason;
+    public MessageResponse getMessage() {
+        return message;
+    }
 
-    public ChoiceResponse(){}
-
-    public ChoiceResponse(
-        String text,
-        int index,
-        boolean logprobs,
-        String finishReason
-    ){
-        this.text = text;
-        this.index = index;
-        this.logprobs = logprobs;
-        this.finishReason = finishReason;
+    public void setMessage(MessageResponse message) {
+        this.message = message;
     }
 }

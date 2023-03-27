@@ -3,7 +3,7 @@ package com.helloworld.learn.app.requests;
 import com.helloworld.learn.app.models.features.Lesson;
 import org.springframework.lang.Nullable;
 
-import javax.persistence.Column;
+import jakarta.persistence.Column;
 
 public class CreateVocabularyRequest {
 

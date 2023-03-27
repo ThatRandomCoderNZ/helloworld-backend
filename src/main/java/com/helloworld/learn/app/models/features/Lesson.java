@@ -1,6 +1,6 @@
 package com.helloworld.learn.app.models.features;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
