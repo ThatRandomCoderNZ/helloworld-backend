@@ -1,12 +1,20 @@
-package com.helloworld.learn.app.models;
+package com.helloworld.learn.app.models.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "user")
 public class DAOUser {
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +24,15 @@ public class DAOUser {
     @Column
     @JsonIgnore
     private String password;
+
+    public DAOUser(){}
+
+    public DAOUser(long id, String username, String password)
+    {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+    }
 
     public String getUsername() {
         return username;
