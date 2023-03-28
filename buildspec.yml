@@ -1,12 +1,5 @@
 version: 0.2
 
-env:
-  variables:
-    google_credentials: "GOOGLE_APPLICATION_CREDENTIALS=./clientLibraryConfig-aws-hello-world.json"
-
-  exported-variables:
-    - google_credentials
-
 phases:
   install:
     runtime-versions:
