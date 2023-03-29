@@ -13,4 +13,10 @@ public class IndexController {
     public String getIndex(){
         return "Success";
     }
+
+    @CrossOrigin
+    @GetMapping("/error")
+    public String getError(){
+        return "Something went wrong";
+    }
 }
