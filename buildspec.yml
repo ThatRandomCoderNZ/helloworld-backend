@@ -16,6 +16,9 @@ phases:
     commands:
       - echo "Entered the post-build phase"
       - mv target/app-0.0.1-SNAPSHOT.jar ./
+      - cp clientLibraryConfig-aws-hello-world.json test-cred.json
 artifacts:
   files:
     - app-0.0.1-SNAPSHOT.jar
+    - .platform/**/*
+    - test-cred.json
