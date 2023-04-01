@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ProgressRespository extends CrudRepository<Progress, Long> {
 
-    Progress findByUserIdAndVocabulary(Long userId, Vocabulary vocabulary);
+    Progress findByUserUuidAndVocabulary(String userUuid, Vocabulary vocabulary);
 
-    List<Progress> findAllByUserIdAndVocabularyIn(Long userId, List<Vocabulary> vocabulary);
+    List<Progress> findAllByUserUuidAndVocabularyIn(String userUuid, List<Vocabulary> vocabulary);
 }

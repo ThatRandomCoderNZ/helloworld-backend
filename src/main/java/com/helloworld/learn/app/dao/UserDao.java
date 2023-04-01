@@ -8,4 +8,6 @@ import com.helloworld.learn.app.models.user.DAOUser;
 @Repository
 public interface UserDao extends CrudRepository<DAOUser, Integer> {
     DAOUser findByUsername(String username);
+
+    DAOUser findByUuid(String uuid);
 }

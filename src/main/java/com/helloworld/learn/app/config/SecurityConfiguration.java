@@ -45,7 +45,7 @@ public class SecurityConfiguration {
                 try {
                     authz
                     .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                    .requestMatchers("/authenticate", "/register", "/", "/error").permitAll()
+                    .requestMatchers("/authenticate", "/register", "/login", "/", "/error").permitAll()
                     .anyRequest().authenticated().and().
                     // make sure we use stateless session; session won't be used to
                     // store user's state.

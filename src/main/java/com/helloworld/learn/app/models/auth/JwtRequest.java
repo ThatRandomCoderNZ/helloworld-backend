@@ -3,36 +3,27 @@ package com.helloworld.learn.app.models.auth;
 import java.io.Serializable;
 
 public class JwtRequest implements Serializable {
+    private String accessToken;
+    private String userCode;
 
-    private static final long serialVersionUID = 5926468583005150707L;
-
-    private String username;
-    private String password;
-
-    //need default constructor for JSON Parsing
-    public JwtRequest()
-    {
-
+    public JwtRequest(String encodedString, String userCode) {
+        this.accessToken = encodedString;
+        this.userCode = userCode;
     }
 
-    public JwtRequest(String username, String password) {
-        this.setUsername(username);
-        this.setPassword(password);
+    public String getAccessToken() {
+        return accessToken;
     }
 
-    public String getUsername() {
-        return this.username;
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public String getUserCode() {
+        return this.userCode.substring(0,4);
     }
 
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserCode(String username) {
+        this.userCode = username;
     }
 }

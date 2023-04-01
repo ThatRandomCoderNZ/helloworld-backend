@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.Iterator;
 
+import com.helloworld.learn.app.models.user.DAOUser;
+import com.helloworld.learn.app.models.user.UserRoles;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -28,6 +30,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Autowired
     private JwtUserDetailsService jwtUserDetailsService;
 
+
+
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
@@ -37,6 +41,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
 
         final String requestTokenHeader = request.getHeader("Authorization");
+        logger.warn("Request URI: " + request.getRequestURI());
 
         String username = null;
         String jwtToken = null;
@@ -59,6 +64,15 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
             UserDetails userDetails = this.jwtUserDetailsService.loadUserByUsername(username);
+
+            if(request.getRequestURI().startsWith("/admin")) {
+                DAOUser user = this.jwtUserDetailsService.findUserByUsername(username);
+                System.out.println(username);
+                if(user.getRole() != UserRoles.ADMIN){
+                    chain.doFilter(request, response);
+                }
+            }
+
 
             // if token is valid configure Spring Security to manually set
             // authentication

@@ -5,6 +5,7 @@ import com.helloworld.learn.app.models.features.Language;
 import com.helloworld.learn.app.models.openai.CompletionRequest;
 import com.helloworld.learn.app.models.openai.UserContext;
 import com.helloworld.learn.app.models.user.DAOUser;
+import com.helloworld.learn.app.models.user.UserRoles;
 import com.helloworld.learn.app.repositories.LanguageRepository;
 import com.helloworld.learn.app.repositories.UserContextRepository;
 import org.slf4j.Logger;
@@ -42,7 +43,7 @@ public class AiInteractionService {
 
         if(userContext == null){
             userContext = new UserContext();
-            userContext.setUser(new DAOUser(userId, "", ""));
+            userContext.setUser(new DAOUser(userId, "", "", UserRoles.USER, ""));
         }
 
         String currentContext = userContext.getContext() != null ? userContext.getContext() : "";

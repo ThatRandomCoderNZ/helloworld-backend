@@ -25,16 +25,16 @@ public class ProgressService {
         this.vocabularyRepository = vocabularyRepository;
     }
 
-    public Progress getProgressByIds(Long userId, Long vocabularyId){
+    public Progress getProgressByIds(String userUuid, Long vocabularyId){
         Vocabulary vocabulary = this.vocabularyRepository.findById(vocabularyId).orElseThrow();
-        return this.progressRespository.findByUserIdAndVocabulary(userId, vocabulary);
+        return this.progressRespository.findByUserUuidAndVocabulary(userUuid, vocabulary);
     }
 
-    public List<Progress> getAllProgressByIds(Long userId, List<Long> vocabularyIds){
+    public List<Progress> getAllProgressByIds(String userUuid, List<Long> vocabularyIds){
         List<Vocabulary> vocabulary = new ArrayList<>();
         this.vocabularyRepository.findAllById(vocabularyIds).forEach(vocabulary::add);
 
-        return this.progressRespository.findAllByUserIdAndVocabularyIn(userId, vocabulary);
+        return this.progressRespository.findAllByUserUuidAndVocabularyIn(userUuid, vocabulary);
     }
 
     public void upsertProgress(Progress progress)
