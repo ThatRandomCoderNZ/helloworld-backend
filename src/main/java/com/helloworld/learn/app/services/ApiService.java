@@ -24,7 +24,6 @@ public class ApiService {
     private VaultTemplate vaultTemplate;
 
     public CompletionRequest makeRequest(String prompt) throws JsonProcessingException {
-        // You usually would not print a secret to stdout
 //        VaultResponse vaultResponse = vaultTemplate
 //                .opsForKeyValue("secret", VaultKeyValueOperationsSupport.KeyValueBackend.KV_2).get("openai");
 //
