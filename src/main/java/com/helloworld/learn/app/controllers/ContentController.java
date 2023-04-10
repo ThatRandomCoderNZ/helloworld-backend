@@ -1,19 +1,10 @@
 package com.helloworld.learn.app.controllers;
 
-import com.helloworld.learn.app.models.Test;
 import com.helloworld.learn.app.models.features.*;
-import com.helloworld.learn.app.repositories.LanguageRepository;
-import com.helloworld.learn.app.repositories.SectionRepository;
-import com.helloworld.learn.app.repositories.TestRepository;
-import com.helloworld.learn.app.requests.ContentCreationRequest;
-import com.helloworld.learn.app.requests.CreateLanguageRequest;
-import com.helloworld.learn.app.requests.CreateLessonRequest;
-import com.helloworld.learn.app.requests.CreateSectionRequest;
+import com.helloworld.learn.app.requests.*;
 import com.helloworld.learn.app.services.ContentService;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -115,7 +106,7 @@ public class ContentController {
             @PathVariable("sectionId") Long sectionId,
             @RequestBody Lesson lessonRequest
     ) {
-        lessonRequest.setSection(new Section(sectionId, "", 0, languageId));
+        lessonRequest.setSection(new Section(sectionId, "", 0, languageId, SectionType.FOREIGN));
         this.contentService.upsertLesson(lessonRequest);
     }
 
@@ -208,6 +199,44 @@ public class ContentController {
     ) {
         List<GrammarLesson> lessons = this.contentService.getAllGrammarLessonsByLanguage(languageId);
         return lessons.stream().map(GrammarLessonResponse::new).toList();
+    }
+
+
+
+
+    @PostMapping("/{languageId}/import-json/{type}")
+    public void importDataFromJson(
+            @PathVariable("languageId") Long languageId,
+            @PathVariable("type") SectionType type,
+            @RequestBody List<JsonImportSectionRequest> importData
+    ){
+        Language language = new Language(languageId, "", "");
+        importData.forEach(importSection -> {
+            Section section = new Section();
+            section.setTitle(importSection.getName());
+            section.setDifficulty(0);
+            section.setType(type);
+            section.setLanguage(language);
+            contentService.upsertSection(section);
+
+            for (JsonImportLessonRequest importLesson : importSection.getLessons()) {
+                Lesson lesson = new Lesson();
+                lesson.setName(importLesson.getName());
+                lesson.setType("Vocabulary");
+                lesson.setSection(section);
+                contentService.upsertLesson(lesson);
+
+                importLesson.getVocab().forEach(importVocab -> {
+                    Vocabulary vocab = new Vocabulary();
+                    vocab.setForeignWord(importVocab.getForeignWord());
+                    vocab.setNativeWord(importVocab.getNativeWord());
+                    vocab.setForeignAlternative(importVocab.getAlternativeWord());
+                    vocab.setLesson(lesson);
+                    contentService.upsertVocabulary(vocab);
+                });
+
+            }
+        });
     }
 
 

@@ -12,6 +12,7 @@ import com.helloworld.learn.app.services.GoogleApiInteractionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.*;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -46,6 +47,18 @@ public class OpenAiController {
     }
 
 
+    @GetMapping("/sentence-with-word/{languageId}/{word}")
+    public String generateSentenceWithWord(
+            @PathVariable("languageId") Long languageId,
+            @PathVariable("word") String word
+    ) throws JsonProcessingException {
+        String language = this.languageRepository.findById(languageId).orElseThrow().getName();
+        String prompt = "Use " + word + " in a child friendly " + language + " sentence. Give the sentence in " + language +
+                " first and then provide the English translation separated by a / character. In the format: Japanese/English";
+
+        CompletionRequest sentence = this.apiService.makeRequest(prompt);
+        return sentence.getChoices().get(0).getMessage().getContent();
+    }
 
 
     @PostMapping("/test-speech/{languageId}")

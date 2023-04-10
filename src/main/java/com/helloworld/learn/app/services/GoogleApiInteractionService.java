@@ -32,6 +32,7 @@ public class GoogleApiInteractionService {
 
     public byte[] convertTextToSpeech(String promptText, Long languageId) throws IOException {
         try (TextToSpeechClient textToSpeechClient = TextToSpeechClient.create()) {
+            System.out.println(promptText);
 
             Language language = this.languageRepository.findById(languageId).orElseThrow();
             // Set the text input to be synthesized

@@ -38,12 +38,13 @@ public class Section {
 
     public Section(){}
 
-    public Section(Long id, String title, int difficulty, Long languageId)
+    public Section(Long id, String title, int difficulty, Long languageId, SectionType type)
     {
         super();
         this.sectionId = id;
         this.title = title;
         this.difficulty = difficulty;
+        this.type = type;
         this.language = new Language(languageId, "", "");
     }
 

@@ -39,7 +39,7 @@ public class JwtUserDetailsService implements UserDetailsService {
     }
 
     public DAOUser findUserByUuid(String uuid) throws UsernameNotFoundException {
-        return userDao.findByUsername(uuid);
+        return userDao.findByUuid(uuid);
     }
 
     public DAOUser save(UserDTO user) {

@@ -28,7 +28,7 @@ public class Lesson {
         this.lessonId = id;
         this.name = name;
         this.type = type;
-        this.section = new Section(sectionId, "", 0, 0L);
+        this.section = new Section(sectionId, "", 0, 0L, SectionType.FOREIGN);
     }
 
     public Long getLessonId() {
