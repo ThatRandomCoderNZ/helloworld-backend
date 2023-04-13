@@ -35,7 +35,7 @@ public class GoogleApiInteractionService {
 
     public byte[] convertTextToSpeech(String promptText, Long languageId) throws IOException {
         System.out.println("Pretty sure the next step fails without auth");
-        String credentialsPath = "/var/app/current/helloworldlearn-378008-dbd2da23740e.json";
+        String credentialsPath = "/var/app/current/sa-cred.json";
         GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream(credentialsPath));
         TextToSpeechSettings textToSpeechSettings = TextToSpeechSettings.newHttpJsonBuilder().build();
         try (TextToSpeechClient textToSpeechClient = TextToSpeechClient.create(TextToSpeechSettings.newHttpJsonBuilder().setCredentialsProvider(FixedCredentialsProvider.create(credentials)).build());) {
