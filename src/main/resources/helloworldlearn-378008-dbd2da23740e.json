@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "helloworldlearn-378008",
+  "private_key_id": "dbd2da23740e78838270832acb0e6bc5f1e2a808",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQCIms9E9yKBXH2j\nAnPI1S79cv8o672eU3GvEKficLOND20tQ7A5RzZP11kXnCNkvtBxSwbyj8TXFqiF\nX9WdJja0sUc+Ngcn8mPGNCqqfTQpTjycnGi8ZQ417YRg3+TUHFifSjawRF8MCWY1\nGCspxPikh4DSjAfxxjTsL71wFlM/Eu0dThlDF2WrkAOLxooYgrKEK9l1cCAE3lAY\nuPU2qjiLTaVdPdf+4Rdg3oS4WlCZvo0XNiRPF0aZRIqPhEztXA7kRff7NJtLFzpv\nqWCAmLGd1nCyiUB3WHp/zyZYIOxGRDH0l+abiBBqgw3wb+x//XDitP5z6PYu7Ka6\nuDkYeDeJAgMBAAECgf8/h3nL54vndLZh7WIIpHlndugK4sYyaiH9boR2vD7Ehw3q\n03uSnCXdUww7/TuEPugI340S3qESWwuhnmdla2MXK2aoBRV3nnnOJSkD+CTv1piZ\npbsys++NwgJ0XJR01pcPCSA9MNSxtdA+T42sCuYAb8n2fi75eSupccSCR9+vLEpb\nzJomKrHzkDGNsz+H4Mi/UcxhMypgxS1BaXotRTGMmOfeDe7x6N8Tf75AwCS42t01\niD4HDLzywyJhAI8OhOZs2nEV7Ab5mHx7UrzRvR8DNrfMOmhKBU0YUj79bg5XtBY6\nGhLBxsIQHu/1VliQ00TJ1oK+vU+7Hhp9ik5309ECgYEAvMVHtnIKtcrWXtdg5xfu\nLxbPCxvD0SeEVHCL+iRDJQn1MTqd2DJybZtf4+fpTgBbpUjEwTfnnyVoG7EueiM+\nDrXdVN5L8hPVy/6BYM+0ltLpsFXFyG2GP8EGfZMCjQl5QAD0VqTAE5Oeskk5W8Ys\ngyE2sri+SEzrOg3ewKJcpTkCgYEAuUFs+Rod5/535WaCKa1aiY8zguI3fMGV4FUt\nI9U/mZlNHX5EQsAWmvIfNYSvANmOBJ+hKckTkdtQ4Zo8cpxnWR7JrwvN9KvQBEEj\nCAKNlozsTfv45+L6eXCM1+UEqnKA9nNeG/vkw365WkkcpVAP4sjc+LIA2RkDd3BC\ntOsz9NECgYA7Yy1efp5T9w5eJBA+Y87xTZGxgvil8nK1RfsjpQjivDFBXZmPDL/n\nL7yJLMq/WWl7pFsSFo5uCQypuaJPlorNgfWx34WxEQBv/w+g73d3A7+1VCa3GY3k\nvMtX8koZKOPWePZl08sB3a1Nla/P6ZbTYj2dGHX0tQ5D410y6WGQMQKBgFm7Vw1R\nmSrGF00GWgXV8gSvWEQNTtMe8Xm3yCWTJTtBBhlDD81FPa3PmU5S9nFy71dN+sJC\nozgDAypDiwP4vhZs00P2c8wPbLKi2lUG544EtHERm362cpxf59irFZd53v2A5BSp\n7iTDPQR+ZWGtZgRzRpUvozmE5Cj2N1lqk8ABAoGBAIlw3xFdnlbrM+m6Jh33f1R1\nfLwHDehcR8vjtPDPF5Vq31AAJUWYFHXGcNESuCWgA6pxSS27HFPX2NSTwHbxxQwh\nvnweEnAfy1YRzbUPjk3YRPfC8GnLH34EOxVdXzzVLMfbBSjJFCFXsIXydXJ7z3KV\npa4SPc4on5dmIKfSPoDp\n-----END PRIVATE KEY-----\n",
+  "client_email": "hwl-api-service@helloworldlearn-378008.iam.gserviceaccount.com",
+  "client_id": "107303165229928202492",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/hwl-api-service%40helloworldlearn-378008.iam.gserviceaccount.com"
+}

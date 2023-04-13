@@ -1,5 +1,7 @@
 package com.helloworld.learn.app.services;
 
+import com.google.api.gax.core.FixedCredentialsProvider;
+import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.speech.v1.RecognitionAudio;
 import com.google.cloud.speech.v1.RecognitionConfig;
 import com.google.cloud.speech.v1.RecognizeResponse;
@@ -14,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.stream.Collectors;
 
@@ -32,10 +35,10 @@ public class GoogleApiInteractionService {
 
     public byte[] convertTextToSpeech(String promptText, Long languageId) throws IOException {
         System.out.println("Pretty sure the next step fails without auth");
+        String credentialsPath = "/var/app/current/helloworldlearn-378008-dbd2da23740e.json";
+        GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream(credentialsPath));
         TextToSpeechSettings textToSpeechSettings = TextToSpeechSettings.newHttpJsonBuilder().build();
-        try (TextToSpeechClient textToSpeechClient = TextToSpeechClient.create(textToSpeechSettings)) {
-            System.out.println(promptText);
-            System.out.println("about to request text to speech");
+        try (TextToSpeechClient textToSpeechClient = TextToSpeechClient.create(TextToSpeechSettings.newHttpJsonBuilder().setCredentialsProvider(FixedCredentialsProvider.create(credentials)).build());) {
 
             Language language = this.languageRepository.findById(languageId).orElseThrow();
             // Set the text input to be synthesized
