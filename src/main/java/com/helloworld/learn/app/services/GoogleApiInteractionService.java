@@ -32,7 +32,8 @@ public class GoogleApiInteractionService {
 
     public byte[] convertTextToSpeech(String promptText, Long languageId) throws IOException {
         System.out.println("Pretty sure the next step fails without auth");
-        try (TextToSpeechClient textToSpeechClient = TextToSpeechClient.create()) {
+        TextToSpeechSettings textToSpeechSettings = TextToSpeechSettings.newHttpJsonBuilder().build();
+        try (TextToSpeechClient textToSpeechClient = TextToSpeechClient.create(textToSpeechSettings)) {
             System.out.println(promptText);
             System.out.println("about to request text to speech");
 
