@@ -35,10 +35,10 @@ public class GoogleApiInteractionService {
 
     public byte[] convertTextToSpeech(String promptText, Long languageId) throws IOException {
         System.out.println("Pretty sure the next step fails without auth");
-        String credentialsPath = "/var/app/current/sa-cred.json";
+        String credentialsPath = "/Users/ethanmitchell/personal/personal-keys/helloworldlearn-378008-dbd2da23740e.json";
         GoogleCredentials credentials = GoogleCredentials.fromStream(new FileInputStream(credentialsPath));
         TextToSpeechSettings textToSpeechSettings = TextToSpeechSettings.newHttpJsonBuilder().build();
-        try (TextToSpeechClient textToSpeechClient = TextToSpeechClient.create(TextToSpeechSettings.newHttpJsonBuilder().setCredentialsProvider(FixedCredentialsProvider.create(credentials)).build());) {
+        try (TextToSpeechClient textToSpeechClient = TextToSpeechClient.create(TextToSpeechSettings.newBuilder().setCredentialsProvider(FixedCredentialsProvider.create(credentials)).build());) {
 
             Language language = this.languageRepository.findById(languageId).orElseThrow();
             // Set the text input to be synthesized
